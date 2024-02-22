@@ -22,15 +22,15 @@
 	<modules>
 		<module>dp-core</module>
 		<module>ingest-router</module>
-		<module>telemetry-extractor</module>
-		<module>pipeline-preprocessor</module>
-		<module>de-normalization</module>
-		<module>druid-events-validator</module>
-		<module>device-profile-updater</module>
-		<module>content-cache-updater</module>
-		<module>assessment-aggregator</module>
-		<module>user-cache-updater-2.0</module>
-		<module>cb-preprocessor</module>
+<!--		<module>telemetry-extractor</module>-->
+<!--		<module>pipeline-preprocessor</module>-->
+<!--		<module>de-normalization</module>-->
+<!--		<module>druid-events-validator</module>-->
+<!--		<module>device-profile-updater</module>-->
+<!--		<module>content-cache-updater</module>-->
+<!--		<module>assessment-aggregator</module>-->
+<!--		<module>user-cache-updater-2.0</module>-->
+<!--		<module>cb-preprocessor</module>-->
 		<module>rating</module>
 	</modules>
 
