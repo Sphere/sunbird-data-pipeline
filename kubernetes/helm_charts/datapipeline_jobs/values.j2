@@ -163,7 +163,7 @@ base_config: |
           storage {
             account = "{% if checkpoint_store_type == "azure" %}{{ azure_account }}.blob.core.windows.net{% elif checkpoint_store_type == "s3" %}{{ flink_dp_storage_container }}{% endif %}"
             container = "{{ flink_container_name }}"
-            checkpointing.dir = "checkpoint"
+            checkpointing.dir = "dp-checkpoint"
           }
         }
 {% if checkpoint_store_type == "azure" %}
