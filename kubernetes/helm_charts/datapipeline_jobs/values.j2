@@ -157,7 +157,7 @@ base_config: |
     }
     job {
       env = "{{ env_name }}"
-      enable.distributed.checkpointing = true
+      enable.distributed.checkpointing = false
       statebackend {
         blob {
           storage {
@@ -168,7 +168,7 @@ base_config: |
         }
 {% if checkpoint_store_type == "azure" %}
         base.url = "wasbs://"${job.statebackend.blob.storage.container}"@"${job.statebackend.blob.storage.account}"/"${job.statebackend.blob.storage.checkpointing.dir}
-{% elif checkpoint_store_type == "s3" %}
+{% elif checkpoint_store_type == "aws" %}
         base.url = "s3://"${job.statebackend.blob.storage.account}"/"${job.statebackend.blob.storage.container}"/"${job.statebackend.blob.storage.checkpointing.dir}
 {% endif %}
       }
