@@ -19,6 +19,12 @@ class RatingTask(config: RatingConfig, kafkaConnector: FlinkKafkaConnector) {
 
     implicit val env: StreamExecutionEnvironment = FlinkUtil.getExecutionContext(config)
     implicit val eventTypeInfo: TypeInformation[Event] = TypeExtractor.getForClass(classOf[Event])
+    env.enableCheckpointing(60000) // Checkpoint every 60 seconds
+    val stateBackend: StateBackend = new FsStateBackend(s"${config.checkpointingBaseUrl.getOrElse("")}/${config.jobName}", true)
+    env.setStateBackend(stateBackend)
+    val checkpointConfig: CheckpointConfig = env.getCheckpointConfig
+    checkpointConfig.enableExternalizedCheckpoints(ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION)
+    checkpointConfig.setMinPauseBetweenCheckpoints(config.checkpointingPauseSeconds)
 
     val source = kafkaConnector.kafkaEventSource[Event](config.inputTopic)
 
