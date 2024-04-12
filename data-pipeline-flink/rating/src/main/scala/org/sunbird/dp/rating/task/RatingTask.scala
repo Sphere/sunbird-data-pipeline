@@ -10,6 +10,14 @@ import org.sunbird.dp.core.job.FlinkKafkaConnector
 import org.sunbird.dp.core.util.FlinkUtil
 import org.sunbird.dp.rating.domain.Event
 import org.sunbird.dp.rating.function.RatingFunction
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment
+import org.apache.flink.streaming.api.TimeCharacteristic
+import org.apache.flink.api.common.restartstrategy.RestartStrategies
+import org.sunbird.dp.core.job.BaseJobConfig
+import org.apache.flink.runtime.state.StateBackend
+import org.apache.flink.runtime.state.filesystem.FsStateBackend
+import org.apache.flink.streaming.api.environment.CheckpointConfig
+import org.apache.flink.streaming.api.environment.CheckpointConfig.ExternalizedCheckpointCleanup
 
 class RatingTask(config: RatingConfig, kafkaConnector: FlinkKafkaConnector) {
 
