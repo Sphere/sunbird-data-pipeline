@@ -626,8 +626,7 @@ rating:
       user.port = {{ redis_meta_user_port }}
       dialcode.port = {{ redis_meta_dialcode_port }}
     }
-  s3.access-key: {{ s3_storage_key }}
-  s3.secret-key: {{ s3_storage_secret }}
+  
  
 
   flink-conf: |+
@@ -642,6 +641,9 @@ rating:
     heartbeat.interval: 5000
     taskmanager.memory.process.size: {{ flink_job_names['rating'].taskmanager_process_memory }}
     jobmanager.memory.process.size: {{ flink_job_names['rating'].jobmanager_process_memory }}
+    s3.access-key: {{ s3_storage_key }}
+    s3.secret-key: {{ s3_storage_secret }}
+    state.backend: filesystem
 
 druid-validator:
   druid-validator: |+
