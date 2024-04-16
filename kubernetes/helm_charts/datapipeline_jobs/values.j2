@@ -626,8 +626,8 @@ rating:
       user.port = {{ redis_meta_user_port }}
       dialcode.port = {{ redis_meta_dialcode_port }}
     }
-  s3.access-key = {{ s3_storage_key }}
-  s3.secret-key = {{ s3_storage_secret }}
+  s3.access-key: {{ s3_storage_key }}
+  s3.secret-key: {{ s3_storage_secret }}
  
 
   flink-conf: |+
