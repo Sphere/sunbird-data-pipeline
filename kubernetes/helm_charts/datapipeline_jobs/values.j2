@@ -163,7 +163,7 @@ base_config: |
           storage {
             account = "{% if checkpoint_store_type == "azure" %}{{ azure_account }}.blob.core.windows.net{% elif checkpoint_store_type == "s3" %}{{ flink_dp_storage_container }}{% endif %}"
             container = "{{ flink_container_name }}"
-            checkpointing.dir = "dp-checkpoint"
+            checkpointing.dir = "checkpoint"
           }
         }
        base.url = "s3://"${job.statebackend.blob.storage.account}"/"${job.statebackend.blob.storage.container}"/"${job.statebackend.blob.storage.checkpointing.dir} 
