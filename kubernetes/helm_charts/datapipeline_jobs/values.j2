@@ -577,8 +577,8 @@ rating:
   rating: |+
     include file("/data/flink/conf/base-config.conf")
     kafka {
-      producer.broker-servers = "{{ ingestion_kafka_brokers }}"
-      consumer.broker-servers = "{{ ingestion_kafka_brokers }}"
+      producer.broker-servers = "{{ rating-kafka }}"
+      consumer.broker-servers = "{{ rating-kafka }}"
       input.topic = {{ env_name }}.rating.event
       output.topic = {{ env_name }}.rating.failedRating
       groupId = {{ env_name }}-rating-group
