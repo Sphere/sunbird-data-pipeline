@@ -77,6 +77,15 @@ metadata:
   name: {{ .Release.Name }}-jobmanager
   namespace: {{ .Values.namespace }}
 spec:
+  {{- if .Values.tolerations.enabled }}
+      tolerations:
+        - key: "dedicated"
+          operator: "Equal"
+          value: "flink"
+          effect: "NoSchedule"
+      nodeSelector:
+        role: flink       
+      {{- end }}
   template:
     metadata:
       labels:
@@ -170,6 +179,15 @@ spec:
         app: flink
         component: {{ .Release.Name }}-taskmanager
     spec:
+      {{- if .Values.tolerations.enabled }}
+      tolerations:
+        - key: "dedicated"
+          operator: "Equal"
+          value: "flink"
+          effect: "NoSchedule"
+      nodeSelector:
+        role: flink       
+      {{- end }} 
       volumes:
       - name: flink-config-volume
         configMap:
