@@ -78,14 +78,14 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   {{- if .Values.tolerations.enabled }}
-      tolerations:
-        - key: "dedicated"
-          operator: "Equal"
-          value: "flink"
-          effect: "NoSchedule"
-      nodeSelector:
-        role: flink       
-      {{- end }}
+  tolerations:
+    - key: "dedicated"
+      operator: "Equal"
+      value: "flink"
+      effect: "NoSchedule"
+  nodeSelector:
+    role: flink       
+  {{- end }} 
   template:
     metadata:
       labels:
