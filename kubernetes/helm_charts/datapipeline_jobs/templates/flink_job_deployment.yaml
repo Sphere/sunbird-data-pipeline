@@ -81,7 +81,7 @@ spec:
   tolerations:
     - key: "dedicated"
       operator: "Equal"
-      value: "flink"
+      value: "flink-prod"
       effect: "NoSchedule"
   nodeSelector:
     role: flink       
@@ -183,7 +183,7 @@ spec:
       tolerations:
         - key: "dedicated"
           operator: "Equal"
-          value: "flink"
+          value: "flink-prod"
           effect: "NoSchedule"
       nodeSelector:
         role: flink       
